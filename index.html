@@ -1,14 +1,157 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Proyecto Web</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>test</h1>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guau&Miau - Iniciar Sesión</title>
 
-  <script src="script.js"></script>
+    <!-- Estilos generales -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Estilos específicos del login -->
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">
+            🐾 Guau&Miau
+        </div>
+    </header>
+
+    <main class="login-container">
+
+        <section class="login-card">
+
+            <div class="login-header">
+                <div class="logo-mascota">🐶🐱</div>
+                <h1>Bienvenido a Guau&Miau</h1>
+                <p>Inicia sesión para continuar</p>
+            </div>
+
+            <form id="loginForm">
+
+                <!-- Correo -->
+                <div class="form-group">
+                    <label for="correo">Correo electrónico</label>
+
+                    <input
+                        type="email"
+                        id="correo"
+                        name="correo"
+                        placeholder="ejemplo@duoc.cl"
+                        autocomplete="email"
+                    >
+
+                    <small id="correoError" class="error-message"></small>
+                </div>
+
+                <!-- Contraseña -->
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Ingresa tu contraseña"
+                        autocomplete="current-password"
+                    >
+
+                    <small id="passwordError" class="error-message"></small>
+                </div>
+
+                <!-- Mensaje general -->
+                <div id="loginMessage" class="login-message"></div>
+
+                <button type="submit" class="btn btn-primary">
+                    Iniciar sesión
+                </button>
+
+            </form>
+
+            <div class="login-links">
+                <button
+                    type="button"
+                    id="btnRecuperar"
+                    class="link-button"
+                >
+                    ¿Olvidaste tu contraseña?
+                </button>
+
+                <p>
+                    ¿No tienes una cuenta?
+                    <a href="registro.html">Registrarse</a>
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Modal recuperar acceso -->
+    <div id="recuperarModal" class="modal">
+
+        <div class="modal-content">
+
+            <button
+                type="button"
+                id="cerrarModal"
+                class="modal-close"
+            >
+                &times;
+            </button>
+
+            <h2>Recuperar acceso</h2>
+
+            <p>
+                Ingresa tu correo electrónico para solicitar
+                la recuperación de tu cuenta.
+            </p>
+
+            <form id="recuperarForm">
+
+                <div class="form-group">
+                    <label for="correoRecuperacion">
+                        Correo electrónico
+                    </label>
+
+                    <input
+                        type="email"
+                        id="correoRecuperacion"
+                        placeholder="ejemplo@duoc.cl"
+                    >
+
+                    <small
+                        id="recuperacionError"
+                        class="error-message"
+                    ></small>
+                </div>
+
+                <div
+                    id="recuperacionMessage"
+                    class="login-message"
+                ></div>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Recuperar acceso
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- Primero storage.js del compañero -->
+    <script src="js/storage.js"></script>
+
+    <!-- Después tu lógica -->
+    <script src="js/login.js"></script>
+
 </body>
 </html>
