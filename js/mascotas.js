@@ -1,85 +1,77 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Gestión de Mascotas</title>
-  <style>
-    .mascota-item {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 10px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    .btn-eliminar {
-      background-color: #ff4d4d;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-  </style>
-</head>
-<body>
+// Manejo dinámico de interfaz para la sección de Mascotas
 
-  <h2>Mascotas Registradas</h2>
-  
-  <div id="contenedor-mascotas"></div>
+document.addEventListener('DOMContentLoaded', () => {
+  const btnAgregar = document.getElementById('btn-agregar-mascota');
+  const contenedor = document.getElementById('contenedor-mascotas');
 
-  <button type="button" id="btn-agregar">+ Añadir Mascota</button>
+  if (btnAgregar && contenedor) {
+    // Escucha el evento del botón "+ Añadir Mascota"
+    btnAgregar.addEventListener('click', () => agregarCampoMascota(contenedor));
 
-  <script>
-    const contenedor = document.getElementById('contenedor-mascotas');
-    const btnAgregar = document.getElementById('btn-agregar');
+    // Agregar un primer bloque por defecto
+    agregarCampoMascota(contenedor);
+  }
+});
 
-    function crearMascota() {
-      const div = document.createElement('div');
-      div.classList.add('mascota-item');
+/**
+ * Crea e inyecta dinámicamente el bloque HTML para una mascota.
+ */
+function agregarCampoMascota(contenedor) {
+  const tarjeta = document.createElement('div');
+  tarjeta.classList.add('mascota-card');
 
-      // Select de Tipo de Mascota
-      const selectTipo = document.createElement('select');
-      selectTipo.name = 'tipo_mascota[]';
-      selectTipo.required = true;
-      
-      const opciones = ['Perro', 'Gato', 'Ave', 'Otro'];
-      opciones.forEach(tipo => {
-        const option = document.createElement('option');
-        option.value = tipo.toLowerCase();
-        option.textContent = tipo;
-        selectTipo.appendChild(option);
+  tarjeta.innerHTML = `
+    <div class="form-group">
+      <label>Nombre de la Mascota *</label>
+      <input 
+        type="text" 
+        class="mascota-nombre" 
+        placeholder="Ej. Pelusa" 
+        maxlength="50" 
+        required 
+      />
+    </div>
+    
+    <div class="form-group">
+      <label>Tipo de Mascota *</label>
+      <select class="mascota-tipo" required>
+        <option value="" disabled selected>-- Selecciona un tipo --</option>
+        <option value="Perro">Perro</option>
+        <option value="Gato">Gato</option>
+        <option value="Ave">Ave</option>
+        <option value="Otro">Otro</option>
+      </select>
+    </div>
+
+    <button type="button" class="btn-eliminar-mascota">Eliminar</button>
+  `;
+
+  // Listener para el botón de eliminar de esta tarjeta específica
+  const btnEliminar = tarjeta.querySelector('.btn-eliminar-mascota');
+  btnEliminar.addEventListener('click', () => tarjeta.remove());
+
+  contenedor.appendChild(tarjeta);
+}
+
+/**
+ * Recolecta las mascotas ingresadas en el DOM y las devuelve como un arreglo de objetos.
+ * @returns {Array<{tipo: string, nombre: string}>}
+ */
+function obtenerMascotasIngresadas() {
+  const tarjetas = document.querySelectorAll('.mascota-card');
+  const mascotas = [];
+
+  tarjetas.forEach(tarjeta => {
+    const nombreInput = tarjeta.querySelector('.mascota-nombre');
+    const tipoSelect = tarjeta.querySelector('.mascota-tipo');
+
+    if (nombreInput.value.trim() !== '' && tipoSelect.value !== '') {
+      mascotas.push({
+        nombre: nombreInput.value.trim(),
+        tipo: tipoSelect.value
       });
-
-      // Input Nombre
-      const inputNombre = document.createElement('input');
-      inputNombre.type = 'text';
-      inputNombre.name = 'nombre_mascota[]';
-      inputNombre.placeholder = 'Nombre de la mascota';
-      inputNombre.required = true;
-      inputNombre.maxLength = 50;
-
-      // Botón Eliminar
-      const btnEliminar = document.createElement('button');
-      btnEliminar.type = 'button';
-      btnEliminar.textContent = 'Eliminar';
-      btnEliminar.classList.add('btn-eliminar');
-      btnEliminar.addEventListener('click', () => div.remove());
-
-      // Ensamblar nodo
-      div.appendChild(selectTipo);
-      div.appendChild(inputNombre);
-      div.appendChild(btnEliminar);
-
-      contenedor.appendChild(div);
     }
+  });
 
-    // Agregar una fila inicial por defecto al cargar
-    crearMascota();
-
-    // Event listener para añadir nuevas mascotas
-    btnAgregar.addEventListener('click', crearMascota);
-  </script>
-</body>
-</html>
+  return mascotas;
+}
