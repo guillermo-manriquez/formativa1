@@ -4,49 +4,83 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Guau&Miau - Registro</title>
+  
+  <!-- Estilos globales y de marca -->
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Estilos específicos del registro -->
   <link rel="stylesheet" href="css/registro.css">
 </head>
 <body>
-  <main class="registro-card">
-    <h2>Registro de Usuario</h2>
-    
-    <form id="form-registro" novalidate>
-      <div class="form-group">
-        <label for="nombre">Nombre Completo *</label>
-        <input type="text" id="nombre" maxlength="50">
-        <span class="error-msg" id="error-nombre"></span>
+
+  <header class="header">
+    <div class="logo">
+      🐾 Guau&Miau
+    </div>
+  </header>
+
+  <main class="registro-container">
+    <section class="registro-card">
+      <div class="registro-header">
+        <div class="logo-mascota">🐶🐱</div>
+        <h2>Registro de Usuario</h2>
+        <p>Crea tu cuenta para acceder a Guau&Miau</p>
       </div>
 
-      <div class="form-group">
-        <label for="email">Correo Electrónico (@duoc.cl) *</label>
-        <input type="email" id="email">
-        <span class="error-msg" id="error-email"></span>
+      <form id="form-registro" novalidate>
+        <div class="form-group">
+          <label for="nombre">Nombre Completo *</label>
+          <input type="text" id="nombre" placeholder="Ej. Juan Pérez" maxlength="50">
+          <span class="error-msg" id="error-nombre"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Correo Electrónico (@duoc.cl) *</label>
+          <input type="email" id="email" placeholder="ejemplo@duoc.cl">
+          <span class="error-msg" id="error-email"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Contraseña *</label>
+          <input type="password" id="password" placeholder="Mínimo 8 caracteres">
+          <span class="error-msg" id="error-password"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="confirm-password">Confirmar Contraseña *</label>
+          <input type="password" id="confirm-password" placeholder="Repite tu contraseña">
+          <span class="error-msg" id="error-confirm-password"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Teléfono (Opcional)</label>
+          <input type="tel" id="telefono" placeholder="+56 9 1234 5678">
+          <span class="error-msg" id="error-telefono"></span>
+        </div>
+
+        <!-- Seccion de Mascotas (Vicente) -->
+        <div id="seccion-mascotas" class="seccion-mascotas">
+          <div class="mascotas-header">
+            <h3>🐾 Tus Mascotas (Opcional)</h3>
+            <p>Añade las mascotas que tengas en tu hogar</p>
+          </div>
+          <div id="contenedor-mascotas"></div>
+          <button type="button" id="btn-agregar-mascota" class="btn btn-secondary">+ Añadir Mascota</button>
+        </div>
+
+        <div id="registroMessage" class="login-message"></div>
+
+        <button type="submit" id="btn-submit" class="btn btn-primary">Crear Cuenta</button>
+      </form>
+
+      <div class="registro-links">
+        <p>¿Ya tienes una cuenta? <a href="index.html">Iniciar sesión</a></p>
       </div>
-
-      <div class="form-group">
-        <label for="password">Contraseña *</label>
-        <input type="password" id="password">
-        <span class="error-msg" id="error-password"></span>
-      </div>
-
-      <div class="form-group">
-        <label for="confirm-password">Confirmar Contraseña *</label>
-        <input type="password" id="confirm-password">
-        <span class="error-msg" id="error-confirm-password"></span>
-      </div>
-
-      <div class="form-group">
-        <label for="telefono">Teléfono (Opcional)</label>
-        <input type="tel" id="telefono">
-        <span class="error-msg" id="error-telefono"></span>
-      </div>
-
-      <div id="seccion-mascotas"></div>
-
-      <button type="submit" id="btn-submit">Crear Cuenta</button>
-    </form>
+    </section>
   </main>
 
+  <!-- Modulos JavaScript en orden de dependencia -->
+  <script src="js/storage.js"></script>
+  <script src="js/mascotas.js"></script>
   <script src="js/registro.js"></script>
 </body>
-</html>
+</html>

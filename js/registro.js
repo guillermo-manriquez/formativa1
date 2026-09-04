@@ -84,7 +84,56 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (esValido) {
-      alert('¡Formulario de registro validado con éxito!');
+      // 1. Validar unicidad del correo en localStorage (vía storage.js)
+      if (typeof esCorreoUnico === 'function' && !esCorreoUnico(email)) {
+        mostrarError('email', 'error-email', 'El correo electrónico ya se encuentra registrado.');
+        return;
+      }
+
+      // 2. Obtener lista de mascotas ingresadas (vía mascotas.js)
+      const mascotas = typeof obtenerMascotasIngresadas === 'function' 
+        ? obtenerMascotasIngresadas() 
+        : [];
+
+      // 3. Crear objeto de usuario
+      const nuevoUsuario = {
+        nombre,
+        correo: email,
+        password,
+        telefono,
+        mascotas,
+        fechaRegistro: new Date().toISOString()
+      };
+
+      // 4. Guardar en localStorage (vía storage.js)
+      let guardadoExitoso = false;
+      if (typeof guardarUsuario === 'function') {
+        guardadoExitoso = guardarUsuario(nuevoUsuario);
+      } else {
+        // Fallback en caso de no haber cargado storage.js
+        const usuarios = JSON.parse(localStorage.getItem('guau_miau_usuarios') || '[]');
+        usuarios.push(nuevoUsuario);
+        localStorage.setItem('guau_miau_usuarios', JSON.stringify(usuarios));
+        guardadoExitoso = true;
+      }
+
+      if (guardadoExitoso) {
+        const registroMsg = document.getElementById('registroMessage');
+        if (registroMsg) {
+          registroMsg.textContent = '¡Registro completado con éxito! Redirigiendo al inicio de sesión...';
+          registroMsg.className = 'login-message message-success';
+        }
+
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1500);
+      } else {
+        const registroMsg = document.getElementById('registroMessage');
+        if (registroMsg) {
+          registroMsg.textContent = 'Hubo un error al guardar el registro. Inténtelo nuevamente.';
+          registroMsg.className = 'login-message message-error';
+        }
+      }
     }
   });
-}); //comparacion estricta
+});

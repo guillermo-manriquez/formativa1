@@ -5,19 +5,20 @@ function obtenerUsuariosParaLogin() {
         return obtenerUsuarios();
     }
 
-    const usuarios = localStorage.getItem("usuarios");
+    const datos = localStorage.getItem("guau_miau_usuarios") || localStorage.getItem("usuarios");
 
-    if (!usuarios) {
+    if (!datos) {
         return [];
     }
 
     try {
-        return JSON.parse(usuarios);
+        return JSON.parse(datos);
     } catch (error) {
         console.error("Error al leer usuarios:", error);
         return [];
     }
 }
+
 
 
 const loginForm = document.getElementById("loginForm");
