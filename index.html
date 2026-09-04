@@ -20,10 +20,11 @@
         </div>
         <nav>
             <ul class="nav-menu">
-                <li><a href="index.html" class="active">Iniciar Sesión</a></li>
-                <li><a href="registro.html">Registro</a></li>
+                <li><a href="index.html" class="nav-link active">Iniciar Sesión</a></li>
+                <li><a href="registro.html" class="nav-link">Registro</a></li>
             </ul>
         </nav>
+
     </header>
 
     <main class="login-container">
@@ -31,7 +32,7 @@
             <article class="login-header">
                 <div class="logo-mascota">🐶🐱</div>
                 <h1>Bienvenido a Guau&Miau</h1>
-                <p>Inicia sesión para acceder a tu cuenta y mascotas</p>
+                <p>Inicia sesión para continuar</p>
             </article>
 
             <form id="loginForm">
@@ -84,11 +85,22 @@
                 </p>
             </div>
         </section>
+
+        <!-- Video Promocional al final centrado -->
+        <article class="video-container">
+            <h3>🎥 Descubre nuestra tienda</h3>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/WJx8nVGd7lA?si=9v0Bp24PVmfc6Sua" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </article>
     </main>
+
 
     <!-- Modal recuperar acceso -->
     <div id="recuperarModal" class="modal">
+
         <div class="modal-content">
+
             <button
                 type="button"
                 id="cerrarModal"
@@ -96,48 +108,70 @@
             >
                 &times;
             </button>
+
             <h2>Recuperar acceso</h2>
+
             <p>
                 Ingresa tu correo electrónico para solicitar
                 la recuperación de tu cuenta.
             </p>
+
             <form id="recuperarForm">
+
                 <div class="form-group">
                     <label for="correoRecuperacion">
                         Correo electrónico
                     </label>
+
                     <input
                         type="email"
                         id="correoRecuperacion"
                         placeholder="ejemplo@duoc.cl"
                     >
+
                     <small
                         id="recuperacionError"
                         class="error-message"
                     ></small>
                 </div>
+
                 <div
                     id="recuperacionMessage"
                     class="login-message"
                 ></div>
+
                 <button
                     type="submit"
                     class="btn btn-primary"
                 >
                     Recuperar acceso
                 </button>
+
             </form>
+
         </div>
+
     </div>
 
     <footer class="footer">
-        <p>&copy; 2026 Guau&Miau - Todos los derechos reservados. Escuela de Informática y Telecomunicaciones (Duoc UC).</p>
+        <div class="footer-content">
+            <div class="footer-brand">
+                🐾 Guau&Miau Pet Shop
+            </div>
+            <ul class="footer-links">
+                <li><a href="index.html">Iniciar Sesión</a></li>
+                <li><a href="registro.html">Registro</a></li>
+            </ul>
+            <p>&copy; 2026 Guau&Miau - Escuela de Informática y Telecomunicaciones (Duoc UC)</p>
+        </div>
     </footer>
 
     <!-- Primero storage.js del compañero -->
     <script src="js/storage.js"></script>
+
+
     <!-- Después tu lógica -->
     <script src="js/login.js"></script>
+
 </body>
 </html>
-
