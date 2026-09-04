@@ -1,167 +1,155 @@
 /* =========================
-   LOGIN
+   ESTILOS GENERALES
+   Guau&Miau
    ========================= */
 
-.login-container {
-    min-height: calc(100vh - 70px);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 40px 20px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.login-card {
+:root {
+    --color-principal: #ff914d;
+    --color-principal-hover: #e97832;
+
+    --color-secundario: #ffd166;
+
+    --color-fondo: #fff8f1;
+    --color-blanco: #ffffff;
+
+    --color-texto: #333333;
+    --color-texto-secundario: #666666;
+
+    --color-error: #d93025;
+    --color-exito: #188038;
+
+    --color-borde: #dddddd;
+
+    --sombra: 0 8px 25px rgba(0, 0, 0, 0.10);
+
+    --radio: 12px;
+}
+
+/* =========================
+   BODY
+   ========================= */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    min-height: 100vh;
+}
+
+/* =========================
+   HEADER
+   ========================= */
+
+.header {
     width: 100%;
-    max-width: 430px;
-
+    padding: 18px 40px;
     background-color: var(--color-blanco);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
 
-    padding: 35px;
-
-    border-radius: 18px;
-
-    box-shadow: var(--sombra);
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--color-principal);
 }
 
 /* =========================
-   ENCABEZADO LOGIN
+   BOTONES
    ========================= */
 
-.login-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.logo-mascota {
-    font-size: 50px;
-    margin-bottom: 10px;
-}
-
-.login-header h1 {
-    font-size: 25px;
-    margin-bottom: 8px;
-}
-
-.login-header p {
-    color: var(--color-texto-secundario);
-}
-
-/* =========================
-   LINKS LOGIN
-   ========================= */
-
-.login-links {
-    text-align: center;
-    margin-top: 25px;
-}
-
-.login-links p {
-    margin-top: 15px;
-    color: var(--color-texto-secundario);
-}
-
-.link-button {
+.btn {
+    width: 100%;
     border: none;
-    background: none;
-    color: var(--color-principal-hover);
+    border-radius: var(--radio);
+    padding: 13px 20px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+    transition: 0.2s;
 }
 
-.link-button:hover {
+.btn-primary {
+    background-color: var(--color-principal);
+    color: var(--color-blanco);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-principal-hover);
+}
+
+/* =========================
+   FORMULARIOS
+   ========================= */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: var(--color-principal);
+}
+
+/* =========================
+   ERRORES
+   ========================= */
+
+.error-message {
+    display: block;
+    margin-top: 5px;
+    color: var(--color-error);
+    font-size: 13px;
+    min-height: 16px;
+}
+
+/* =========================
+   MENSAJES
+   ========================= */
+
+.login-message {
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.message-error {
+    color: var(--color-error);
+}
+
+.message-success {
+    color: var(--color-exito);
+}
+
+/* =========================
+   LINKS
+   ========================= */
+
+a {
+    color: var(--color-principal-hover);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
     text-decoration: underline;
-}
-
-/* =========================
-   MODAL
-   ========================= */
-
-.modal {
-    display: none;
-
-    position: fixed;
-    z-index: 1000;
-
-    left: 0;
-    top: 0;
-
-    width: 100%;
-    height: 100%;
-
-    background-color: rgba(0, 0, 0, 0.5);
-
-    justify-content: center;
-    align-items: center;
-
-    padding: 20px;
-}
-
-.modal.active {
-    display: flex;
-}
-
-.modal-content {
-    position: relative;
-
-    width: 100%;
-    max-width: 420px;
-
-    background-color: var(--color-blanco);
-
-    padding: 35px;
-
-    border-radius: 15px;
-
-    box-shadow: var(--sombra);
-}
-
-.modal-content h2 {
-    margin-bottom: 12px;
-}
-
-.modal-content p {
-    color: var(--color-texto-secundario);
-    margin-bottom: 20px;
-    line-height: 1.5;
-}
-
-.modal-close {
-    position: absolute;
-
-    top: 10px;
-    right: 15px;
-
-    border: none;
-    background: none;
-
-    font-size: 30px;
-
-    cursor: pointer;
-
-    color: var(--color-texto-secundario);
-}
-
-.modal-close:hover {
-    color: var(--color-texto);
-}
-
-/* =========================
-   RESPONSIVE
-   ========================= */
-
-@media (max-width: 500px) {
-
-    .header {
-        padding: 15px 20px;
-    }
-
-    .login-card {
-        padding: 25px 20px;
-    }
-
-    .login-header h1 {
-        font-size: 22px;
-    }
 }
