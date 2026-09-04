@@ -16,15 +16,21 @@
     <div class="logo">
       🐾 Guau&Miau
     </div>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">Iniciar Sesión</a></li>
+        <li><a href="registro.html" class="active">Registro</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main class="registro-container">
     <section class="registro-card">
-      <div class="registro-header">
+      <article class="registro-header">
         <div class="logo-mascota">🐶🐱</div>
         <h2>Registro de Usuario</h2>
         <p>Crea tu cuenta para acceder a Guau&Miau</p>
-      </div>
+      </article>
 
       <form id="form-registro" novalidate>
         <div class="form-group">
@@ -58,14 +64,14 @@
         </div>
 
         <!-- Seccion de Mascotas (Vicente) -->
-        <div id="seccion-mascotas" class="seccion-mascotas">
+        <article id="seccion-mascotas" class="seccion-mascotas">
           <div class="mascotas-header">
             <h3>🐾 Tus Mascotas (Opcional)</h3>
             <p>Añade las mascotas que tengas en tu hogar</p>
           </div>
           <div id="contenedor-mascotas"></div>
           <button type="button" id="btn-agregar-mascota" class="btn btn-secondary">+ Añadir Mascota</button>
-        </div>
+        </article>
 
         <div id="registroMessage" class="login-message"></div>
 
@@ -78,9 +84,14 @@
     </section>
   </main>
 
+  <footer class="footer">
+    <p>&copy; 2026 Guau&Miau - Todos los derechos reservados. Escuela de Informática y Telecomunicaciones (Duoc UC).</p>
+  </footer>
+
   <!-- Modulos JavaScript en orden de dependencia -->
   <script src="js/storage.js"></script>
   <script src="js/mascotas.js"></script>
   <script src="js/registro.js"></script>
 </body>
-</html>
+</html>
+

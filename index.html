@@ -18,24 +18,26 @@
         <div class="logo">
             🐾 Guau&Miau
         </div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Iniciar Sesión</a></li>
+                <li><a href="registro.html">Registro</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main class="login-container">
-
         <section class="login-card">
-
-            <div class="login-header">
+            <article class="login-header">
                 <div class="logo-mascota">🐶🐱</div>
                 <h1>Bienvenido a Guau&Miau</h1>
-                <p>Inicia sesión para continuar</p>
-            </div>
+                <p>Inicia sesión para acceder a tu cuenta y mascotas</p>
+            </article>
 
             <form id="loginForm">
-
                 <!-- Correo -->
                 <div class="form-group">
                     <label for="correo">Correo electrónico</label>
-
                     <input
                         type="email"
                         id="correo"
@@ -43,14 +45,12 @@
                         placeholder="ejemplo@duoc.cl"
                         autocomplete="email"
                     >
-
                     <small id="correoError" class="error-message"></small>
                 </div>
 
                 <!-- Contraseña -->
                 <div class="form-group">
                     <label for="password">Contraseña</label>
-
                     <input
                         type="password"
                         id="password"
@@ -58,7 +58,6 @@
                         placeholder="Ingresa tu contraseña"
                         autocomplete="current-password"
                     >
-
                     <small id="passwordError" class="error-message"></small>
                 </div>
 
@@ -68,7 +67,6 @@
                 <button type="submit" class="btn btn-primary">
                     Iniciar sesión
                 </button>
-
             </form>
 
             <div class="login-links">
@@ -85,16 +83,12 @@
                     <a href="registro.html">Registrarse</a>
                 </p>
             </div>
-
         </section>
-
     </main>
 
     <!-- Modal recuperar acceso -->
     <div id="recuperarModal" class="modal">
-
         <div class="modal-content">
-
             <button
                 type="button"
                 id="cerrarModal"
@@ -102,56 +96,48 @@
             >
                 &times;
             </button>
-
             <h2>Recuperar acceso</h2>
-
             <p>
                 Ingresa tu correo electrónico para solicitar
                 la recuperación de tu cuenta.
             </p>
-
             <form id="recuperarForm">
-
                 <div class="form-group">
                     <label for="correoRecuperacion">
                         Correo electrónico
                     </label>
-
                     <input
                         type="email"
                         id="correoRecuperacion"
                         placeholder="ejemplo@duoc.cl"
                     >
-
                     <small
                         id="recuperacionError"
                         class="error-message"
                     ></small>
                 </div>
-
                 <div
                     id="recuperacionMessage"
                     class="login-message"
                 ></div>
-
                 <button
                     type="submit"
                     class="btn btn-primary"
                 >
                     Recuperar acceso
                 </button>
-
             </form>
-
         </div>
-
     </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Guau&Miau - Todos los derechos reservados. Escuela de Informática y Telecomunicaciones (Duoc UC).</p>
+    </footer>
 
     <!-- Primero storage.js del compañero -->
     <script src="js/storage.js"></script>
-
     <!-- Después tu lógica -->
     <script src="js/login.js"></script>
-
 </body>
 </html>
+

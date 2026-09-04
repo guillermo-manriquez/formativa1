@@ -31,6 +31,8 @@ body {
     background-color: var(--color-fondo);
     color: var(--color-texto);
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .header {
@@ -38,6 +40,9 @@ body {
     padding: 18px 40px;
     background-color: var(--color-blanco);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
@@ -45,6 +50,35 @@ body {
     font-weight: bold;
     color: var(--color-principal);
 }
+
+.nav-menu {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.nav-menu a {
+    color: var(--color-texto);
+    font-size: 15px;
+    transition: color 0.2s;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: var(--color-principal);
+}
+
+.footer {
+    margin-top: auto;
+    width: 100%;
+    padding: 20px 40px;
+    background-color: var(--color-blanco);
+    border-top: 1px solid var(--color-borde);
+    text-align: center;
+    font-size: 14px;
+    color: var(--color-texto-secundario);
+}
+
 
 .btn {
     width: 100%;
